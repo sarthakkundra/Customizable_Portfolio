@@ -47,6 +47,26 @@ const searchElements = (text) => {
     console.error(e);
   }
 }
+
+const uploadElement = async (name, HTMLCode, JSCode, CSSCode, screenshot) => {
+
+  try {
+
+    await axios({
+      method: 'post',
+      url: '/api/elements',
+      data: {
+        name,
+        HTMLCode,
+        JSCode,
+        CSSCode,
+        screenshot
+      }
+    });
+  } catch (e) {
+      console.log(e);
+  }
+}
 // Clear elements
 
 // Set Loading
@@ -60,7 +80,8 @@ return (
       loading: state.loading,
       filtered: state.filtered,
       getElements,
-      searchElements
+      searchElements,
+      uploadElement
     }}
   >
     {props.children}
