@@ -5,10 +5,13 @@ import Home from "./components/pages/Home";
 import Team from "./components/pages/Team";
 import Elements from "./components/pages/Elements";
 import Contribute from "./components/pages/Contribute";
+
+import ElementState from './context/element/elementState';
 import "./App.css";
 
 function App() {
   return (
+    <ElementState>
     <Router>
       <Switch>
         <Route exact path='/elements'>
@@ -27,6 +30,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </ElementState>
   );
 }
 

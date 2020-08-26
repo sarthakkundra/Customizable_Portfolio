@@ -68,6 +68,7 @@ const Contribute = () => {
       console.log('Name and image are required');
     }else{
       elementContext.uploadElement(name, htmlCode, jsCode, cssCode, screenshot);
+      console.log(name)
     }
   }
 

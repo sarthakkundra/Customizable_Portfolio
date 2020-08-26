@@ -1,5 +1,8 @@
 const multer = require("multer");
 const express = require("express");
+const cloudinary = require('cloudinary').v2;
+
+require("dotenv").config();
 
 const router = express.Router();
 
@@ -19,6 +22,13 @@ const upload = multer({
     cb(null, true);
   },
 });
+
+// Cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
+})
 
 // Get all elements
 router.get("/", async (req, res) => {
@@ -43,7 +53,7 @@ router.post("/", upload.single("screenshot"), async (req, res) => {
       JSCode: req.body.JSCode,
       HTMLCode: req.body.HTMLCode,
       CSSCode: req.body.CSSCode,
-      screenshot: req.file.buffer,
+      screenshot: req.body.buffer,
     });
 
     await newElement.save();

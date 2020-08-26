@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import { encode } from 'js-base64';
 
 import ElementContext from "./elementContext";
 import ElementReducer from "./elementReducer";
@@ -50,13 +51,13 @@ const searchElements = (text) => {
 
 const uploadElement = async (name, HTMLCode, JSCode, CSSCode, screenshot) => {
 
+  console.log(encode(await screenshot.text()));
   try {
-
     await axios({
       method: 'post',
       url: '/api/elements',
       data: {
-        name,
+        name: name,
         HTMLCode,
         JSCode,
         CSSCode,
