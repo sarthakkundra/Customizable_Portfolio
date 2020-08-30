@@ -51,7 +51,21 @@ const searchElements = (text) => {
 
 const uploadElement = async (name, HTMLCode, JSCode, CSSCode, screenshot) => {
 
-  console.log(encode(await screenshot.text()));
+  console.log(URL.createObjectURL(createurl(encode(await screenshot.text()))))
+  // console.log(encode(await screenshot.text()));
+  // const string = encode(await screenshot.text());
+  // try {
+    
+  //     await axios({
+  //       method: 'post',
+  //       url: '/api/elements/img',
+  //       data: {
+  //         string
+  //       }
+  //     })
+  // } catch (err) {
+  //   console.log(err);
+  // }
   try {
     await axios({
       method: 'post',
@@ -90,4 +104,18 @@ return (
 );
 }
 
+const createurl = (b64String) => {
+
+  const byteCharacters = atob(b64String);
+
+  const byteNumbers = new Array(byteCharacters.length);
+  for(let i = 0; i < byteCharacters.length; i++){
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+
+  const byteArray = new Uint8Array(byteNumbers);
+
+  const blob = new Blob([byteArray], {type: 'image/jpg'});
+  return blob;
+}
 export default ElementState;
