@@ -30,23 +30,6 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET
 })
 
-if (typeof (process.env.CLOUDINARY_URL) === 'undefined') {
-  console.warn('!! cloudinary config is undefined !!');
-  console.warn('export CLOUDINARY_URL or set dotenv file');
-} else {
-  console.log('cloudinary config:');
-  console.log(cloudinary.config()); //this will log here your config coming from the .env file
-}
-
-// Upload images to cloud
-router.post("/img", async (req, res) => {
-
-  const string = req.body.string;
-
-  cloudinary.uploader.upload(`data:image/jpg;base64,${string}`, 
-  function(error, result) {console.log(result, error); });
-})
-
 // Get all elements
 router.get("/", async (req, res) => {
   var elements = [];
