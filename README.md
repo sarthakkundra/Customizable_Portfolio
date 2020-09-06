@@ -29,7 +29,7 @@ This project is part of **PSoC** (Program Summer of Code) organized by UIET Chan
 * [React Js](https://reactjs.org/)
 * [Node Js](https://nodejs.org/en/)
 * [Materia-UI](https://material-ui.com/)
-
+* [Mongo-DB](https://docs.mongodb.com/guides/)
 
 ## Project Structure :blue_book:
 
@@ -136,5 +136,5 @@ For any query or build issues feel free to reach out the maintainers:<br>
  
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/AasthaGithub/Customizable_Portfolio/blob/master/LICENSE) for more information.
 

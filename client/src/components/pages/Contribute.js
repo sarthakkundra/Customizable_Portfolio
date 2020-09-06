@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
-
+import finalcode from '../../utils/contri';
 import Navbar from "../layout/Navbar";
 import JsEditor from "../editor/dynamic/JsEditor";
 import HTMLEditor from "../editor/dynamic/HTMLEditor";
@@ -31,36 +31,16 @@ const Contribute = () => {
   const [name, setName] = useState("");
   const [screenshot, setScreenshot] = useState(null);
 
-  const onChangeJs = (e) => {
-    {
-      var finalCode = "";
-
-      e.display.view.forEach((code) => {
-        finalCode += code.line.text;
-        finalCode += "\n";
-      });
-      setJsCode(finalCode);
-    }
+  const onChangeJs = (e) => {   
+      setJsCode(finalcode(e));
   };
 
   const onChangeHtml = (e) => {
-    var finalCode = "";
-
-    e.display.view.forEach((code) => {
-      finalCode += code.line.text;
-      finalCode += "\n";
-    });
-    setHtmlCode(finalCode);
+    setHtmlCode( finalcode(e));
   }
 
   const onChangeCss = (e) => {
-    var finalCode = "";
-
-    e.display.view.forEach((code) => {
-      finalCode += code.line.text;
-      finalCode +="\n";
-    })
-    setCssCode(finalCode);
+    setCssCode(finalcode(e));
   }
 
   const submit = () => {
